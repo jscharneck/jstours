@@ -11,14 +11,16 @@
     "url": "git+https://github.com/jscharneck/jstours.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Jose Scharneck",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/jscharneck/jstours/issues"
   },
   "homepage": "https://github.com/jscharneck/jstours#readme",
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "pug": "^3.0.2",
+    "puppeteer": "^19.5.2"
   },
   "devDependencies": {
     "nodemon": "^2.0.20"
