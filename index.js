@@ -5,7 +5,7 @@ const app = express();
 
 app.set('view engine', 'pug');
 
-app.get('/api/v1/', async (req, res)=>{
+app.get('/api/v1/',  (req, res)=>{
     
     //console.log(req.url);
     // let browser = await puppeteer.launch({ headless: true });
