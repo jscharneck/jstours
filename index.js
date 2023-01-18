@@ -5,6 +5,8 @@ const app = express();
 
 app.set('view engine', 'pug');
 
+var price = "0.00";
+
 app.get('/', async (req, res)=>{
     
     console.log(req.url);
@@ -12,7 +14,7 @@ app.get('/', async (req, res)=>{
     let page = await browser.newPage();
     await page.goto("https://aa.co.za/fuel-pricing/");
 
-    var price;
+    
 
     setTimeout(async () => {
         let grabParagraph = await page.evaluate(() => {
@@ -35,9 +37,15 @@ app.get('/', async (req, res)=>{
 
 });
 
+app.get("/price",async  (req, res)=>{
+
+    console.log(req.url, price);
+    res.status(200).send(price);
+});
+
 
 
 app.listen(3000, ()=>{
 
-    console.log('started');
+    console.log('started: http://localhost:3000/');
 })

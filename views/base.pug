@@ -9,9 +9,9 @@ html(lang="en")
         
   
     body(class="container")
-        h1 #{greeting}
+        
 
-        p Current Price: R #{price}
+        p(id="price") Current Price: #{price}
 
 
 
@@ -20,3 +20,23 @@ html(lang="en")
         script(src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous")
         script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js")
         script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js")
+
+
+        script.
+            $(document).ready(function () {
+                $("#price").on('click', ()=>{
+                    console.log("clicked");
+
+                    $.get("/price", function(data, status){
+                        console.log("Data: ", data , "Status: ", status);
+
+                        $("#price").html(`Current Price: ${data}`);
+                        //- $("#price").val(`the Current Price: `);
+                    });
+                });
+
+                setTimeout(()=>{
+
+
+                }, 2000);
+            });
