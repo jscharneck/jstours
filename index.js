@@ -8,30 +8,40 @@ app.set('view engine', 'pug');
 var price = "0.00";
 
 app.get('/', async (req, res)=>{
-    
-    console.log(req.url);
-    let browser = await puppeteer.launch({ headless: true });
-    let page = await browser.newPage();
-    await page.goto("https://aa.co.za/fuel-pricing/");
 
-    
+    try 
+    {
+        
+        console.log(req.url);
+        let browser = await puppeteer.launch({ headless: true });
+        let page = await browser.newPage();
+        await page.goto("https://aa.co.za/fuel-pricing/");
 
-    setTimeout(async () => {
-        let grabParagraph = await page.evaluate(() => {
-            let pgTag = document.querySelector("div.s2.srcl p strong");            
-            return pgTag.innerHTML;
-        });
+        
 
-        console.log("grabParagraph: ",grabParagraph);
-         price = grabParagraph;
+        setTimeout(async () => {
+            let grabParagraph = await page.evaluate(() => {
+                let pgTag = document.querySelector("div.s2.srcl p strong");            
+                return pgTag.innerHTML;
+            });
 
-        console.log("the price: ", price);
+            console.log("grabParagraph: ",grabParagraph);
+            price = grabParagraph;
 
-        await browser.close();
+            console.log("the price: ", price);
 
-    }, 5000);
+            await browser.close();
 
+        }, 5000);
+
+        
+    }
+    catch (error)
+    {
+        
+    }
     let greeting = "Hello world";
+    
 
     res.status(200).render('base', {greeting: greeting, price: price});
 
