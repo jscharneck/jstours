@@ -37,7 +37,7 @@ app.get('/', async (req, res)=>{
 
 });
 
-app.get("/price",async  (req, res)=>{
+app.get("/price",  (req, res)=>{
 
     console.log(req.url, price);
     res.status(200).send(price);
