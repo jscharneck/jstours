@@ -8,7 +8,7 @@ exports.checkID = (req, res, next, val) => {
   if (req.params.id * 1 > tours.length) {
     return res.status(404).json({
       status: 'fail',
-      message: 'Invalid Id',
+      message: 'Invalid Id yo',
     });
   }
   next();
